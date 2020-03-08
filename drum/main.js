@@ -6,7 +6,7 @@ function action(event){
     const audio =  selectAudio(event.keyCode)
     const key = selectKey(event.keyCode)
   
-    if(audio != undefined && key != undefined){
+    if(audio !== undefined && key !== undefined){
       play(audio)
       addAnimation(key)
     }

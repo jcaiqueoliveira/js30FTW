@@ -14,7 +14,7 @@ function updateHands(){
     const date = new Date()
     const secondDegrees = calculateHandDegrees(date.getSeconds())
     const minDegrees = calculateHandDegrees(date.getMinutes())
-    
+
     const hourDegrees = calculateHourDegrees(date.getHours())
 
     rotate(secondHand, secondDegrees)
@@ -24,7 +24,6 @@ function updateHands(){
 
 
 function calculateHandDegrees(time){
-   
     return ((time / 60) * 360) + DEFAULT_DEGREES
 }
 

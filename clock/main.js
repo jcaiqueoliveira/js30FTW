@@ -12,10 +12,9 @@ function startTick(){
 function updateHands(){
   
     const date = new Date()
-    const secondDegrees = calculateHandDegrees(date.getSeconds())
-    const minDegrees = calculateHandDegrees(date.getMinutes())
-
-    const hourDegrees = calculateHourDegrees(date.getHours())
+    const secondDegrees = calculateHandDegrees(date.getSeconds(), "second")
+    const minDegrees = calculateHandDegrees(date.getMinutes(), "minute")
+    const hourDegrees = calculateHandDegrees(date.getHours(), "hour")
 
     rotate(secondHand, secondDegrees)
     rotate(minHand, minDegrees)
@@ -23,14 +22,19 @@ function updateHands(){
 }
 
 
-function calculateHandDegrees(time){
-    return ((time / 60) * 360) + DEFAULT_DEGREES
+const divisionByType = {
+    hour : 12,
+    minute : 60,
+    second : 60
 }
 
-function calculateHourDegrees(time){
-    return ((time / 12) * 360) + DEFAULT_DEGREES
+function calculateHandDegrees(time, type){
+    const division = divisionByType[type]
+    return ((time / division) * 360) + DEFAULT_DEGREES
 }
 
 function rotate(hand, degrees){
     hand.style.transform = `rotate(${degrees}deg)`
 }
+
+
